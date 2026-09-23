@@ -4,6 +4,8 @@ CareerHub is an intentionally vulnerable Flask and SQLite training application. 
 local learning only: run it only on `127.0.0.1` / `localhost` and do not send its requests
 to any external host.
 
+HOST WEBSITE: https://careerhub-cybersecurity-lab.onrender.com/
+
 ## Public repository safety
 
 This repository contains an intentionally vulnerable security-training application.
@@ -31,8 +33,7 @@ copy `.env.example` to `.env` and set your own local demo passwords.
 The seed account emails are synthetic local addresses:
 
 - `admin@careerhub.local`
-- `alice@careerhub.local`
-- `bob@careerhub.local`
+
 
 Never commit `.env`, local databases, or exported session/database files.
 
