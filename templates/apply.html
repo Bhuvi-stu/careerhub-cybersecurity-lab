@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow-sm border-0">
+    <div class="card-body p-4">
+        <h2 class="card-title">Apply for {{ job.title }}</h2>
+        <form method="post" enctype="multipart/form-data">
+            <div class="mb-3">
+                <label class="form-label">Resume</label>
+                <input class="form-control" type="file" name="resume">
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Cover Message</label>
+                <textarea class="form-control" name="cover_message" rows="4"></textarea>
+            </div>
+            <button class="btn btn-primary" type="submit">Submit application</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

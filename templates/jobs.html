@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="page-heading d-flex flex-column flex-md-row justify-content-between align-items-md-end gap-3">
+    <div><div class="section-label mb-2">Explore opportunities</div><h2 class="mb-0">Find your next role</h2></div>
+    <form class="d-flex w-100 w-md-auto" method="get">
+        <input class="form-control me-2" type="text" name="search" placeholder="Search jobs, skills or companies" value="{{ query }}">
+        <button class="btn btn-primary" type="submit"><i class="bi bi-search me-1"></i>Search</button>
+    </form>
+</div>
+
+<div class="row g-4">
+    {% for job in jobs %}
+        <div class="col-md-6">
+            <div class="card job-card h-100">
+                <div class="card-body">
+                    <div class="d-flex justify-content-between gap-3"><h5 class="card-title">{{ job.title }}</h5><span class="job-mark"><i class="bi bi-briefcase"></i></span></div>
+                    <p class="text-muted mb-3"><i class="bi bi-building me-1"></i>{{ job.company }} <span class="mx-1">&middot;</span> <i class="bi bi-geo-alt me-1"></i>{{ job.location }}</p>
+                    <p class="card-text">{{ job.description }}</p>
+                    <p class="mb-2"><strong>Salary:</strong> {{ job.salary }}</p>
+                    <a class="btn btn-primary" href="{{ url_for('job_details', job_id=job.id) }}">View details</a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="col-12">
+            <div class="alert alert-info">No jobs found for your search. Try another keyword.</div>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

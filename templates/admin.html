@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row g-4 mb-4">
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h5 class="card-title">Total Users</h5>
+                <h2 class="fw-bold mb-0">{{ stats.users }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h5 class="card-title">Total Jobs</h5>
+                <h2 class="fw-bold mb-0">{{ stats.jobs }}</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h5 class="card-title">Total Applications</h5>
+                <h2 class="fw-bold mb-0">{{ stats.applications }}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row g-4">
+    <div class="col-lg-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h3 class="card-title">Users</h3>
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead><tr><th>Name</th><th>Email</th><th>Role</th></tr></thead>
+                        <tbody>
+                            {% for user in users %}
+                                <tr><td>{{ user.name }}</td><td>{{ user.email }}</td><td>{{ user.role }}</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h3 class="card-title">Jobs</h3>
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead><tr><th>Title</th><th>Company</th><th>Location</th></tr></thead>
+                        <tbody>
+                            {% for job in jobs %}
+                                <tr><td>{{ job.title }}</td><td>{{ job.company }}</td><td>{{ job.location }}</td></tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm border-0 mt-4">
+    <div class="card-body p-4">
+        <h3 class="card-title">Applications</h3>
+        <div class="table-responsive">
+            <table class="table table-sm">
+                <thead><tr><th>Applicant</th><th>Job</th><th>Status</th></tr></thead>
+                <tbody>
+                    {% for application in applications %}
+                        <tr><td>{{ application.name }}</td><td>{{ application.title }}</td><td>{{ application.status }}</td></tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: careerhub-security-lab
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: SECRET_KEY
+        generateValue: true
+      - key: CAREERHUB_ADMIN_EMAIL
+        value: admin@careerhub.local
+      - key: CAREERHUB_ADMIN_PASSWORD
+        sync: false
+      - key: CAREERHUB_ALICE_EMAIL
+        value: alice@careerhub.local
+      - key: CAREERHUB_ALICE_PASSWORD
+        sync: false
+      - key: CAREERHUB_BOB_EMAIL
+        value: bob@careerhub.local
+      - key: CAREERHUB_BOB_PASSWORD
+        sync: false

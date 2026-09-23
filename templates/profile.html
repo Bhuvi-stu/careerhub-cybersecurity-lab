@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-body p-4">
+                <h2 class="card-title">Your profile</h2>
+                <form method="post">
+                    <div class="mb-3">
+                        <label class="form-label">Name</label>
+                        <input class="form-control" type="text" name="name" value="{{ user.name }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Email</label>
+                        <input class="form-control" type="email" name="email" value="{{ user.email }}" required>
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Phone</label>
+                        <input class="form-control" type="text" name="phone" value="{{ profile.phone if profile else '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Skills</label>
+                        <input class="form-control" type="text" name="skills" value="{{ profile.skills if profile else '' }}">
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Professional Summary</label>
+                        <textarea class="form-control" name="professional_summary" rows="4">{{ profile.bio if profile else '' }}</textarea>
+                    </div>
+                    {% if profile and profile.bio %}
+                        <div class="mb-3">
+                            <label class="form-label">Profile preview</label>
+                            <!-- ============================================================
+                            INTENTIONAL LAB VULNERABILITY
+                            Vulnerability: Stored XSS
+                            Location: /profile
+                            Purpose: Render the SQLite-stored profile bio as trusted markup in this local lab.
+                            Secure remediation: Keep Jinja autoescaping enabled: {{ profile.bio }}
+                            ============================================================ -->
+                            <!-- Secure example: <div class="border rounded p-3">{{ profile.bio }}</div> -->
+                            <div class="border rounded p-3">{{ profile.bio | safe }}</div>
+                        </div>
+                    {% endif %}
+                    <button class="btn btn-primary" type="submit">Save profile</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

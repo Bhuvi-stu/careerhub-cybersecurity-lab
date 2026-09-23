@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="card shadow-sm border-0">
+    <div class="card-body p-4">
+        {% if job %}
+            <div class="section-label mb-2">Job opportunity</div>
+            <h2 class="card-title">{{ job.title }}</h2>
+            <p class="text-muted"><i class="bi bi-building me-1"></i>{{ job.company }} <span class="mx-1">&middot;</span> <i class="bi bi-geo-alt me-1"></i>{{ job.location }}</p>
+            <p><strong>Salary:</strong> {{ job.salary }}</p>
+            <p>{{ job.description }}</p>
+            <h5>Requirements</h5>
+            <p>{{ job.requirements }}</p>
+            {% if current_user %}
+                <a class="btn btn-primary" href="{{ url_for('apply', job_id=job.id) }}">Apply now</a>
+            {% else %}
+                <a class="btn btn-outline-primary" href="{{ url_for('login') }}">Login to apply</a>
+            {% endif %}
+        {% else %}
+            <div class="alert alert-warning">Job not found.</div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
