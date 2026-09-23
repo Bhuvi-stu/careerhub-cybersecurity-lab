@@ -4,7 +4,10 @@ CareerHub is an intentionally vulnerable Flask and SQLite training application. 
 local learning only: run it only on `127.0.0.1` / `localhost` and do not send its requests
 to any external host.
 
-HOST WEBSITE: https://careerhub-cybersecurity-lab.onrender.com/
+HOST WEBSITE: https://careerhub-cybersecurity-lab.onrender.com/    **SQL INJECTION IS NOT APPLICABLE IN THIS HOST WEBSITE IT SHOWS * 403 - Forbidden *
+SQL request was blocked by this site's web application firewall (WAF). TOOL I USE FOR HOST IS RESTRICT THIS REQUEST**
+
+YOU RUN THIS PROJECT USING LOCALHOST AND PRACTICE ALL VULNERABILITIES
 
 ## Public repository safety
 
@@ -73,7 +76,7 @@ Browser -> Burp Proxy -> CareerHub (127.0.0.1) -> Flask -> SQLite
 
 ## Local Burp verification guide
 
-### 1. SQL Injection
+### 1. SQL Injection   
 
 - **Endpoint and normal function:** `GET /jobs?search=python` searches the local job listings.
 - **Request/parameter:** Capture the search form request; the relevant parameter is `search`.
